@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <title>Promisify setTimeout!</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+</head>
+
+<body>
+    <div class="container-flex">
+        <div class="row">
+            <div class="col-12 text-center mt-5 mb-3">
+                <h1>Featuring Promises with ES6</h1>
+            </div>
+            <div class="col-2"></div>
+            <div class="col-8 text-center mt-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h3 class="card-title">&#x2623 &#x2623 &#x2623</h5>
+                            <h3>Did the promise finish?</h3>
+                                <p><h5>There is a promise that its going to be triggered 2 seconds after loading the page</h5></p>
+                            <div class="alert alert-warning mt-5" role="alert">
+                                <div class="completion h4">Not yet</div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+    <script>
+        function wait(ms) {
+			/*    
+			Instructions:
+			(1) Wrap this setTimeout in a Promise. resolve() in setTimeout's callback.
+			(2) console.log(this) inside the Promise and observe the results.
+			(3) Make sure wait returns the Promise too!
+			*/
+            return new Promise(function(resolve) {
+                console.log(this);
+                window.setTimeout(function() {
+                    resolve();
+                }, ms);
+            });
+        };
+
+		/*
+		Uncomment these lines when you want to test!
+		You'll know you've done it right when the message on the page changes.
+		 */
+        var milliseconds = 2000;
+        wait(milliseconds).then(finish);        
+
+        // This is just here to help you test.
+        function finish() {
+            var completion = document.querySelector('.completion');
+            completion.innerHTML = "Complete after " + milliseconds + "ms.";
+        };
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
